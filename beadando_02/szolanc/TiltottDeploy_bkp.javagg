@@ -1,0 +1,27 @@
+package szolanc;
+
+import java.rmi.registry.*;
+import java.rmi.*;
+import java.util.*;
+
+public class TiltottDeploy {
+    
+    public static void main(String[] args) {
+		try{
+			if(args.length!=1){
+				System.out.println("Hasznalat:\n 1. parameter: szerverek szama");
+				return;
+			}
+			int n = Integer.parseInt(args[0]);
+			Registry reg = LocateRegistry.createRegistry(12345);
+			for (int c=1;c<=n;++c){
+				reg.rebind("tiltott"+c, new TiltottSzerver("tiltott"+c));
+				System.out.println(c+". tiltott szo szerver elindult.");
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+    }
+}
+
+

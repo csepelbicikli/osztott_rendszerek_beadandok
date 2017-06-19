@@ -1,0 +1,15 @@
+package rmi.calc;
+
+import java.rmi.*;
+import java.rmi.registry.*;
+
+public class CalcClient {
+
+  public static void main(String[] args)
+        throws RemoteException, NotBoundException, java.net.MalformedURLException {
+        CalcInterface ci = (CalcInterface) Naming.lookup("rmi://localhost:8080/calc");
+        System.out.println("A szerver kezdoerteke: " + ci.add(0));
+        System.out.println("...+ 5 = " + ci.add(5));
+        System.out.println("...* 3 = " + ci.mul(3));
+  }    
+}

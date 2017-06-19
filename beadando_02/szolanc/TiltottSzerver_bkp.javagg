@@ -1,0 +1,41 @@
+package szolanc;
+
+import java.rmi.server.*;
+import java.rmi.*;
+import java.util.*;
+import java.io.*;
+
+public class TiltottSzerver
+        extends UnicastRemoteObject
+        implements TiltottInterface {
+    
+    private String nev;
+    private List<String> szoKincs;
+    
+    public TiltottSzerver(String nev) throws RemoteException {
+        super();
+        this.nev = nev;
+        szoKincs = new LinkedList<String>();
+        /*try {
+			Scanner szoKincsFajl = new Scanner(new File(nev+".txt"));
+			while (szoKincsFajl.hasNext()) {
+				szoKincs.add(szoKincsFajl.nextLine());
+			}
+		}
+		catch(IOException e){
+			System.err.println("Szokincs fajl megnyitasa sikertelen");
+		}*/
+    }
+    
+    public synchronized boolean tiltottE(String szo) throws RemoteException {
+        return true;
+        /*for (int i=0;i<szoKincs.size();i++){
+			if (szoKincs.get(i).equals(szo)){
+				return true;
+			}
+		} 
+		szoKincs.add(szo);
+		System.out.println(Arrays.toString(szoKincs));
+        return false;*/
+    }
+}
